@@ -1,55 +1,62 @@
-# Geo Ledger - Country, State & City Management
+# Country-State-City Management Application
 
-A ReactJS assignment implementing hierarchical CRUD management for countries, states, and cities.
+A simple React.js project for hierarchical CRUD management of countries, states, and cities.
 
-## Project structure
+## Project overview
 
-- `index.html` – application entry point, loads React/Babel and the JSX component files
-- `src/App.jsx` – root React component, state management, and event handlers
-- `src/components/CountryList.jsx` – country list view and actions
-- `src/components/StateList.jsx` – state list view and state-level actions
-- `src/components/CityList.jsx` – city list view and city actions
-- `src/styles.css` – global page styling
-- `src/App.css` – layout and app container styling
-- `src/components/CountryList.css` – country card styling
-- `src/components/StateList.css` – state card styling
-- `src/components/CityList.css` – city list styling
+This app is built with React functional components and `useState`, with all UI logic handled in the browser.
+It uses React and Babel from CDN links inside `index.html`, so no local `npm install` or build step is required.
 
-## Features
-
+The app supports:
 - Add, edit, and delete countries
-- Add, edit, and delete states under a country
-- Add and delete cities under a state
-- Confirmation dialogs before edits and deletes
-- Cascade deletion of states and cities when a country or state is removed
-- Uses React functional components and `useState`
-- No backend or API required
+- Add, edit, and delete states within a selected country
+- Add and delete cities within a selected state
+- `prompt()` dialogs for entering names
+- `confirm()` dialogs for delete confirmations
+- Nested state updates with cascade deletion behavior
+
+## Current file structure
+
+- `index.html` – entry point, loads React, ReactDOM, Babel, and the app files
+- `src/App.js` – root component and application state logic
+- `src/CountryList.js` – renders country cards and country-level actions
+- `src/StateList.js` – renders states for a selected country
+- `src/CityList.js` – renders cities for a selected state
+- `src/index.js` – mounts the React app into the DOM
 
 ## How to run
 
-### Option 1: Run with Vite
+### Option 1: Open directly in the browser
 
-1. Install dependencies once:
-   ```powershell
-   npm install
-   ```
-2. Start the dev server:
-   ```powershell
-   npm run dev
-   ```
-3. Open `http://localhost:5173`
+1. Open `index.html` in your browser.
+2. The app loads immediately with React via CDN.
 
-### Option 2: Open the app statically
+### Option 2: Use a simple local server
 
-1. Open `index.html` in a browser.
-2. Use the `+ Add country` button to add a country.
-3. Add state and city items using the action buttons inside each country/state card.
+If you prefer a local server, use any static server such as Live Server in VS Code or `python -m http.server`:
 
-> The project now supports `npm run dev` with Vite, but the static `index.html` file still works for basic preview.
+```powershell
+python -m http.server 8000
+```
+
+Then open:
+
+```text
+http://localhost:8000
+```
+
+## Deployment
+
+This project can be deployed as a static site.
+Recommended hosts:
+- Vercel
+- GitHub Pages
+- Netlify
+
+Since the app is static and uses only `index.html` plus client-side React, Vercel is sufficient.
 
 ## Notes
 
-- `prompt()` collects new names for countries, states, and cities.
-- `confirm()` appears before any edit or delete action.
-- The UI updates immediately after each CRUD action.
-- Initial sample data includes `India` with a state and cities.
+- There is no backend service required.
+- The app uses plain React state and browser dialogs for CRUD workflows.
+- Data is stored only in memory, so page refresh resets the current session.
