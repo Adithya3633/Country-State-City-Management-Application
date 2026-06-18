@@ -1,19 +1,27 @@
-function CityList({ state, countryId, onDeleteCity }) {
+function CityList(props) {
+  var state = props.state;
+  var countryId = props.countryId;
+  var onDeleteCity = props.onDeleteCity;
+
   if (!state.cities.length) {
-    return <p className="hint">No cities available under this state.</p>;
+    return React.createElement('p', { className: 'hint' }, 'No cities available under this state.');
   }
 
-  return (
-    <div className="city-list">
-      {state.cities.map((city) => (
-        <div key={city.id} className="city-row">
-          <span>{city.name}</span>
-          <button className="small-button delete" onClick={() => onDeleteCity(countryId, state.id, city.id)}>
-            Delete
-          </button>
-        </div>
-      ))}
-    </div>
+  return React.createElement(
+    'div',
+    { className: 'city-list' },
+    state.cities.map(function (city) {
+      return React.createElement(
+        'div',
+        { key: city.id, className: 'city-row' },
+        React.createElement('span', null, city.name),
+        React.createElement(
+          'button',
+          { className: 'small-button delete', onClick: function () { return onDeleteCity(countryId, state.id, city.id); } },
+          'Delete'
+        )
+      );
+    })
   );
 }
 

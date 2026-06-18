@@ -169,28 +169,29 @@ function App() {
     );
   };
 
-  return (
-    <div className="app-root">
-      <header className="top-section">
-        <div>
-          <h1>Country, State & City Management</h1>
-        </div>
-        <button className="primary-button" onClick={addCountry}>
-          + Add country
-        </button>
-      </header>
-
-      <CountryList
-        countries={countries}
-        onEditCountry={editCountry}
-        onDeleteCountry={deleteCountry}
-        onAddState={addState}
-        onEditState={editState}
-        onDeleteState={deleteState}
-        onAddCity={addCity}
-        onDeleteCity={deleteCity}
-      />
-    </div>
+  return React.createElement(
+    'div',
+    { className: 'app-root' },
+    React.createElement(
+      'header',
+      { className: 'top-section' },
+      React.createElement(
+        'div',
+        null,
+        React.createElement('h1', null, 'Country, State & City Management')
+      ),
+      React.createElement('button', { className: 'primary-button', onClick: addCountry }, '+ Add country')
+    ),
+    React.createElement(CountryList, {
+      countries: countries,
+      onEditCountry: editCountry,
+      onDeleteCountry: deleteCountry,
+      onAddState: addState,
+      onEditState: editState,
+      onDeleteState: deleteState,
+      onAddCity: addCity,
+      onDeleteCity: deleteCity,
+    })
   );
 }
 
